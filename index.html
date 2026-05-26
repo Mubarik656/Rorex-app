@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROREX - Remote Realistic Experience</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 40px 20px;
+            background: linear-gradient(180deg, #1f1f1f 0%, #121212 100%);
+            border-bottom: 3px solid #00f0ff;
+        }
+        h1 {
+            color: #00f0ff;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin: 0;
+            text-shadow: 0 0 10px #00f0ff;
+        }
+        .subtitle {
+            color: #39ff14;
+            font-size: 1.2rem;
+            margin-top: 10px;
+            letter-spacing: 2px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        .welcome-text {
+            font-size: 1.2rem;
+            color: #aaaaaa;
+            margin-bottom: 40px;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .zone-card {
+            background-color: #1e1e1e;
+            border: 2px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: left;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+        .zone-card:hover {
+            border-color: #00f0ff;
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+            transform: translateY(-5px);
+        }
+        .zone-title {
+            font-size: 1.4rem;
+            color: #00f0ff;
+            margin-0: 0 0 10px 0;
+        }
+        .zone-desc {
+            color: #bbbbbb;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        .laser { border-left: 5px solid #ff0055; }
+        .city { border-left: 5px solid #00f0ff; }
+        .offroad { border-left: 5px solid #ffaa00; }
+        .drag { border-left: 5px solid #39ff14; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ROREX</h1>
+        <div class="subtitle">REMOTE REALISTIC EXPERIENCE</div>
+    </header>
+
+    <div class="container">
+        <p class="welcome-text">Willkommen in der Halle. Wähle deine Zone und steuere echte 1:24 RC-Autos live über deinen Browser!</p>
+        
+        <div class="grid">
+            <div class="zone-card laser">
+                <div class="zone-title" style="color: #ff0055;">1. Laser-Tag Arena</div>
+                <div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche Treffern aus und jage den Highscore in der Live-Arena.</div>
+            </div>
+            
+            <div class="zone-card city">
+                <div class="zone-title">2. Miniatur-Stadt</div>
+                <div class="zone-desc">Fahre gemütlich durch realistische Straßen, halte an Ampeln und erkunde die City per Stoßstangen-Kamera.</div>
+            </div>
+            
+            <div class="zone-card offroad">
+                <div class="zone-title" style="color: #ffaa00;">3. Offroad-Track</div>
+                <div class="zone-desc">Meistere Hügel, Schanzen und Hindernisse mit ferngesteuerten Monstertrucks und Buggys.</div>
+            </div>
+            
+            <div class="zone-card drag">
+                <div class="zone-title" style="color: #39ff14;">4. Drag-Race (1vs1)</div>
+                <div class="zone-desc">Gib Vollgas auf der Highspeed-Geraden. Lichtschranken messen deine Zeit auf die Millisekunde genau.</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
