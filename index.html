@@ -27,9 +27,9 @@
             background: radial-gradient(circle at center, #1f2833 0%, #0b0c10 100%);
         }
 
-        /* --- 1. LOGIN & REGISTRIERUNG --- */
+        /* --- LOGIN SCREEN --- */
         .login-screen {
-            display: block; /* Standardmäßig sichtbar */
+            display: block; 
             background-color: rgba(31, 40, 51, 0.95);
             border: 2px solid var(--neon-blue);
             border-radius: 16px;
@@ -58,51 +58,6 @@
             text-transform: uppercase;
         }
 
-        .form-box { display: none; }
-        .form-box.active { display: block; }
-
-        .input-group {
-            margin-bottom: 20px;
-            text-align: left;
-            position: relative;
-        }
-
-        .input-group label {
-            display: block;
-            color: var(--neon-blue);
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 12px;
-            padding-right: 45px;
-            background-color: #0b0c10;
-            border: 1px solid #444;
-            border-radius: 8px;
-            color: #fff;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-
-        .input-group input:focus {
-            border-color: var(--neon-green);
-            outline: none;
-            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
-        }
-
-        .eye-btn {
-            position: absolute;
-            right: 12px;
-            bottom: 10px;
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            cursor: pointer;
-            font-size: 1.1rem;
-        }
-
         .btn-action {
             width: 100%;
             background-color: transparent;
@@ -123,39 +78,14 @@
             box-shadow: 0 0 15px var(--neon-green);
         }
 
-        .forgot-link {
-            display: block;
-            margin-top: 15px;
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.85rem;
-        }
-
-        .switch-text {
-            margin-top: 30px;
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
-
-        .switch-text span {
-            color: var(--neon-blue);
-            cursor: pointer;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-
-        /* --- 2. DIE HAUPTAPP (NACH LOGIN) --- */
+        /* --- HAUPTAPP SCREEN --- */
         .app-screen {
-            display: none; /* Erst unsichtbar, wird nach Login aktiv */
+            display: none; 
             width: 100%;
             min-height: 100vh;
             align-self: flex-start;
         }
 
-        /* Obere Navigationsleiste */
         .navbar {
             background-color: #1f2833;
             display: flex;
@@ -166,30 +96,28 @@
             top: 0;
             z-index: 1000;
             border-bottom: 2px solid var(--neon-blue);
-            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
         }
 
         .nav-logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: bold;
+            font-style: italic;
             color: var(--neon-blue);
             letter-spacing: 3px;
-            text-shadow: 0 0 10px var(--neon-blue);
         }
 
-        .nav-links {
-            display: flex;
-            gap: 15px;
-        }
+        .nav-links { display: flex; gap: 10px; }
 
         .nav-links a {
             color: var(--text-main);
             text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            padding: 8px 14px;
+            font-size: 1rem;
+            font-weight: 600;
+            font-style: italic;
+            padding: 10px 16px;
             border-radius: 5px;
             transition: 0.3s;
+            text-transform: uppercase;
         }
 
         .nav-links a:hover, .nav-links a.active {
@@ -197,73 +125,207 @@
             background-color: rgba(57, 255, 20, 0.1);
         }
 
-        /* Bereiche (Tabs) */
-        .page-section {
-            padding: 40px 10%;
-            display: none;
-        }
+        .page-section { padding: 40px 0; display: none; }
+        .page-section.active { display: block; }
 
-        .page-section.active {
-            display: block;
-        }
-
-        /* Nike-Style Video/Bilder Platzhalter */
         .hero-video-placeholder {
             background: linear-gradient(90deg, #1f2833 0%, #0b0c10 50%, #1f2833 100%);
-            border: 1px dashed var(--neon-blue);
-            border-radius: 12px;
-            height: 250px;
+            border-bottom: 2px solid var(--neon-blue);
+            width: 100%;
+            height: 60vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            color: var(--text-muted);
-            margin-bottom: 40px;
+            color: var(--neon-green);
+            margin-bottom: 60px;
+            margin-top: -40px;
             font-style: italic;
-            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: inset 0 0 50px rgba(0, 240, 255, 0.15);
         }
+
+        .content-container { padding: 0 10%; }
 
         h2 {
             color: var(--neon-blue);
-            font-size: 2rem;
+            font-size: 2.2rem;
+            font-style: italic;
             border-bottom: 2px solid var(--neon-green);
-            padding-bottom: 10px;
-            margin-bottom: 30px;
+            padding-bottom: 15px;
+            margin-bottom: 40px;
+            text-transform: uppercase;
         }
 
-        /* Grid für die 4 Zonen */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .zone-card {
             background-color: var(--card-bg);
             border: 1px solid #333;
             border-radius: 12px;
-            padding: 25px;
+            padding: 0;
             transition: 0.3s;
             cursor: pointer;
             border-top: 4px solid var(--neon-blue);
+            overflow: hidden; /* Verhindert, dass das Bild oben herausschaut */
+            position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
         .zone-card:hover {
             border-top: 4px solid var(--neon-green);
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            box-shadow: 0 0 20px rgba(57, 255, 20, 0.25);
             transform: translateY(-5px);
         }
 
-        .zone-title {
-            font-size: 1.3rem;
-            color: var(--neon-blue);
-            margin: 0 0 10px 0;
+        /* --- 🖼️ DAS GLOSS-EFFEKT HOVER BILD (GLEITET VON OBEN REIN) --- */
+        .zone-image-wrapper {
+            width: 100%;
+            height: 0; /* Unsichtbar am Start */
+            max-height: 160px;
+            overflow: hidden;
+            transition: height 0.4s ease-in-out; /* Flüssiges Herabgleiten */
+            background-color: #0b0c10;
         }
 
-        .zone-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
+        .zone-card:hover .zone-image-wrapper {
+            height: 160px; /* Gleitet beim Drüberfahren voll nach unten aus */
         }
+
+        .zone-img-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-style: italic;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            border-bottom: 1px solid rgba(0, 240, 255, 0.3);
+        }
+
+        /* Coole neonfarbige Hintergründe für die verschiedenen Zonen-Bilder */
+        .bg-laser { background: linear-gradient(135deg, #7b00ff, #00f0ff); color: #fff; text-shadow: 0 0 8px #00f0ff; }
+        .bg-stadt { background: linear-gradient(135deg, #0055ff, #00ffaa); color: #fff; text-shadow: 0 0 8px #00ffaa; }
+        .bg-offroad { background: linear-gradient(135deg, #ff5500, #ffcc00); color: #fff; text-shadow: 0 0 8px #ffcc00; }
+        .bg-drag { background: linear-gradient(135deg, #ff0055, #7b00ff); color: #fff; text-shadow: 0 0 8px #ff0055; }
+
+        .zone-content {
+            padding: 25px;
+        }
+
+        .zone-title {
+            font-size: 1.4rem;
+            font-style: italic;
+            font-weight: bold;
+            color: var(--neon-blue);
+            margin: 0 0 10px 0;
+            text-transform: uppercase;
+        }
+
+        .zone-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        /* --- 💳 BEZAHLSCHRANKE POPUP (MODAL) --- */
+        .modal-overlay {
+            display: none; 
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(11, 12, 16, 0.85);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            border: 2px solid var(--neon-green);
+            border-radius: 16px;
+            padding: 35px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+            text-align: center;
+            position: relative;
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            font-style: italic;
+            color: var(--neon-blue);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .price-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .price-btn {
+            background-color: #0b0c10;
+            border: 1px solid #444;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.05rem;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .price-btn:hover {
+            border-color: var(--neon-blue);
+            background-color: rgba(0, 240, 255, 0.05);
+        }
+
+        .price-btn span.time { color: var(--text-main); }
+        .price-btn span.cost { color: var(--neon-green); }
+
+        .pay-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .pay-btn {
+            background-color: #111;
+            border: 1px solid #333;
+            color: var(--text-muted);
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .pay-btn:hover {
+            border-color: var(--neon-green);
+            color: white;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px; right: 20px;
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .close-modal:hover { color: red; }
     </style>
 </head>
 <body>
@@ -271,50 +333,12 @@
     <div id="login-screen" class="login-screen">
         <div class="logo-big">ROREX</div>
         <div class="subtitle">Remote Realistic Experience</div>
-
         <div id="login-box" class="form-box active">
-            <div class="input-group">
-                <label for="login-email">E-Mail-Adresse</label>
-                <input type="email" id="login-email" placeholder="Deine E-Mail eingeben">
-            </div>
-            <div class="input-group">
-                <label for="login-password">Passwort</label>
-                <input type="password" id="login-password" placeholder="Dein Passwort eingeben">
-                <button class="eye-btn" onclick="togglePassword('login-password')">👁️</button>
-            </div>
             <button class="btn-action" onclick="loginSuccess()">ANMELDEN</button>
-            <a href="#" class="forgot-link" onclick="alert('Ein Link zum Zurücksetzen des Passworts wurde an deine E-Mail gesendet!')">Passwort vergessen?</a>
-            
-            <div class="switch-text">
-                Du hast noch kein Konto? <span onclick="switchBox('register-box')">Jetzt registrieren</span>
-            </div>
-        </div>
-
-        <div id="register-box" class="form-box">
-            <div class="input-group">
-                <label for="reg-username">Wunsch-Benutzername</label>
-                <input type="text" id="reg-username" placeholder="z.B. Rorex-Racer">
-            </div>
-            <div class="input-group">
-                <label for="reg-email">E-Mail-Adresse</label>
-                <input type="email" id="reg-email" placeholder="name@beispiel.de">
-            </div>
-            <div class="input-group">
-                <label for="reg-password">Passwort auswählen</label>
-                <input type="password" id="reg-password" placeholder="Sicheres Passwort erstellen">
-                <button class="eye-btn" onclick="togglePassword('reg-password')">👁️</button>
-            </div>
-            <button class="btn-action" onclick="loginSuccess()">KONTO ERSTELLEN</button>
-            
-            <div class="switch-text">
-                Du hast schon ein Konto? <span onclick="switchBox('login-box')">Hier einloggen</span>
-            </div>
         </div>
     </div>
 
-
     <div id="app-screen" class="app-screen">
-        
         <nav class="navbar">
             <div class="nav-logo">ROREX</div>
             <div class="nav-links">
@@ -328,88 +352,119 @@
         </nav>
 
         <div id="page-halle" class="page-section active">
-            <div class="hero-video-placeholder">
-                [ Hier läuft später dein cooles Nike-Style Hintergrund-Video von den RC-Autos ]
+            <div class="hero-video-placeholder">[ ROREX - ECHTE RC-ACTION LIVE ]</div>
+            <div class="content-container">
+                <h2>WÄHLE DEINE ZONE</h2>
+                <div class="grid">
+                    
+                    <div class="zone-card" onclick="openPaywall('1. Laser-Tag Arena')">
+                        <div class="zone-image-wrapper">
+                            <div class="zone-img-placeholder bg-laser">⚡ Laser Arena View</div>
+                        </div>
+                        <div class="zone-content">
+                            <div class="zone-title">1. Laser-Tag Arena</div>
+                            <div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche feindlichen Treffern aus und jage den Highscore.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="zone-card" onclick="openPaywall('2. Miniatur-Stadt')">
+                        <div class="zone-image-wrapper">
+                            <div class="zone-img-placeholder bg-stadt">🏙️ City Cockpit View</div>
+                        </div>
+                        <div class="zone-content">
+                            <div class="zone-title">2. Miniatur-Stadt</div>
+                            <div class="zone-desc">Fahre gemütlich durch realistische Straßen, halte an Ampeln und erkunde die City per Cockpit-Kamera.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="zone-card" onclick="openPaywall('3. Offroad-Track')">
+                        <div class="zone-image-wrapper">
+                            <div class="zone-img-placeholder bg-offroad">🚜 Offroad Track View</div>
+                        </div>
+                        <div class="zone-content">
+                            <div class="zone-title">3. Offroad-Track</div>
+                            <div class="zone-desc">Meistere Hügel, Schanzen und tückischen Sand mit ferngesteuerten Monstertrucks.</div>
+                        </div>
+                    </div>
+                    
+                    <div class="zone-card" onclick="openPaywall('4. Drag-Race (1vs1)')">
+                        <div class="zone-image-wrapper">
+                            <div class="zone-img-placeholder bg-drag">🏁 Drag Race 1vs1</div>
+                        </div>
+                        <div class="zone-content">
+                            <div class="zone-title">4. Drag-Race (1vs1)</div>
+                            <div class="zone-desc">Reine Nervensache. Gib Vollgas auf der Gerade und knacke den weltweiten Streckenrekord.</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="page-anleitung" class="page-section"><div class="content-container"><h2>WIE WIRD DAS BENUTZT?</h2></div></div>
+        <div id="page-shop" class="page-section"><div class="content-container"><h2>ROREX CUSTOM-SHOP</h2></div></div>
+        <div id="page-hilfe" class="page-section"><div class="content-container"><h2>HILFE</h2></div></div>
+        <div id="page-kontakt" class="page-section"><div class="content-container"><h2>KONTAKT</h2></div></div>
+    </div>
+
+    <div id="paywall-modal" class="modal-overlay">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closePaywall()">×</span>
+            <div class="modal-title" id="modal-zone-name">ZONE WÄHLEN</div>
+            <p style="color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem;">Wähle deine Fahrzeit. Dein Ticket gilt als Flatrate für alle Zonen!</p>
+            
+            <div class="price-options">
+                <button class="price-btn" onclick="startTimerSim(5)">
+                    <span class="time">⏱️ 5 Minuten Fahrzeit</span> <span class="cost">2,99 €</span>
+                </button>
+                <button class="price-btn" onclick="startTimerSim(10)">
+                    <span class="time">⏱️ 10 Minuten Fahrzeit</span> <span class="cost">5,99 €</span>
+                </button>
+                <button class="price-btn" onclick="startTimerSim(15)">
+                    <span class="time">⏱️ 15 Minuten Fahrzeit</span> <span class="cost">10,99 €</span>
+                </button>
+                <button class="price-btn" onclick="startTimerSim(30)">
+                    <span class="time">⏱️ 30 Minuten Flatrate (Best Value)</span> <span class="cost">34,99 €</span>
+                </button>
             </div>
 
-            <h2>WÄHLE DEINE ZONE</h2>
-            <div class="grid">
-                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
-                    <div class="zone-title">1. Laser-Tag Arena</div>
-                    <div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche feindlichen Treffern aus und jage den Highscore.</div>
-                </div>
-                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
-                    <div class="zone-title">2. Miniatur-Stadt</div>
-                    <div class="zone-desc">Fahre gemütlich durch realistische Straßen, halte an Ampeln und erkunde die City per Cockpit-Kamera.</div>
-                </div>
-                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
-                    <div class="zone-title">3. Offroad-Track</div>
-                    <div class="zone-desc">Meistere Hügel, Schanzen und tückischen Sand mit ferngesteuerten Monstertrucks.</div>
-                </div>
-                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
-                    <div class="zone-title">4. Drag-Race (1vs1)</div>
-                    <div class="zone-desc">Reine Nervensache. Gib Vollgas auf der Gerade und knacke den weltweiten Streckenrekord.</div>
-                </div>
+            <p style="color: var(--neon-blue); margin-bottom: 10px; font-size: 0.9rem; font-weight: bold; text-transform: uppercase;">Zahlungsmethode:</p>
+            <div class="pay-methods">
+                <button class="pay-btn" onclick="alert('PayPal ausgewählt')">PayPal</button>
+                <button class="pay-btn" onclick="alert('Kreditkarte ausgewählt')">Kreditkarte</button>
+                <button class="pay-btn" onclick="alert('Apple Pay ausgewählt')">Apple Pay</button>
+                <button class="pay-btn" onclick="alert('Google Pay ausgewählt')">Google Pay</button>
             </div>
         </div>
-
-        <div id="page-anleitung" class="page-section">
-            <h2>WIE WIRD DAS BENUTZT?</h2>
-            <p>Die Bedienung der ROREX-Fahrzeuge ist kinderleicht und erfordert keine Installation.</p>
-        </div>
-
-        <div id="page-shop" class="page-section">
-            <h2>ROREX CUSTOM-SHOP</h2>
-            <p>Hier kannst du bald dein eigenes Auto personalisieren und für die Halle bestellen...</p>
-        </div>
-
-        <div id="page-hilfe" class="page-section">
-            <h2>HILFE & SUPPORT</h2>
-            <p>Dein Auto steckt fest? Drücke im Spiel den "Reset"-Knopf, um es automatisch zurückzusetzen.</p>
-        </div>
-
-        <div id="page-kontakt" class="page-section">
-            <h2>KONTAKT</h2>
-            <p>Schreibe dem ROREX-Team direkt eine Nachricht.</p>
-        </div>
-
     </div>
 
     <script>
-        // Wechsel zwischen Login und Registrierung
-        function switchBox(boxId) {
-            document.querySelectorAll('.form-box').forEach(box => box.classList.remove('active'));
-            document.getElementById(boxId).classList.add('active');
-        }
-
-        // Passwort-Auge
-        function togglePassword(inputId) {
-            const input = document.getElementById(inputId);
-            input.type = (input.type === "password") ? "text" : "password";
-        }
-
-        // ERFOLGREICHER LOGIN -> Wechsel zur Hauptapp
         function loginSuccess() {
-            // Login-Bildschirm ausblenden
             document.getElementById('login-screen').style.display = 'none';
-            // Haupt-App einblenden
             document.getElementById('app-screen').style.display = 'block';
-            // Zentrierung vom Body aufheben, damit die App oben bündig sitzt
             document.body.style.display = 'block';
         }
 
-        // Wechsel zwischen den Reitern in der Navbar
         function switchPage(pageId) {
-            // Alle Bereiche ausblenden
             document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
-            // Alle Nav-Buttons deaktivieren
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            
-            // Gewünschte Seite und Button aktivieren
             document.getElementById('page-' + pageId).classList.add('active');
             document.getElementById('btn-' + pageId).classList.add('active');
         }
-    </script>
 
+        function openPaywall(zoneName) {
+            document.getElementById('modal-zone-name').innerText = zoneName;
+            document.getElementById('paywall-modal').style.display = 'flex';
+        }
+
+        function closePaywall() {
+            document.getElementById('paywall-modal').style.display = 'none';
+        }
+
+        function startTimerSim(minutes) {
+            alert('Zahlung erfolgreich! Dein ' + minutes + ' Minuten Echtzeit-Timer startet jetzt im Hintergrund (nicht pausierbar). Viel Spaß in der Halle!');
+            closePaywall();
+        }
+    </script>
 </body>
 </html>
