@@ -18,8 +18,7 @@
             background-color: var(--bg-color);
             color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -32,31 +31,23 @@
             display: block; 
             background-color: rgba(31, 40, 51, 0.95);
             border: 2px solid var(--neon-blue);
-            border-radius: 16px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
+            border-radius: 16px; padding: 40px;
+            width: 100%; max-width: 400px;
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
-            text-align: center;
-            box-sizing: border-box;
+            text-align: center; box-sizing: border-box;
         }
 
         .logo-big { font-size: 3rem; font-weight: bold; color: var(--neon-blue); letter-spacing: 5px; margin-bottom: 5px; text-shadow: 0 0 15px var(--neon-blue); }
         .subtitle { color: var(--neon-green); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; }
 
-        /* Super stabiler Anmelde-Button */
         .btn-action {
             display: block !important;
             width: 100% !important;
             background-color: transparent;
             color: var(--neon-green);
             border: 2px solid var(--neon-green);
-            padding: 14px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-top: 15px;
+            padding: 14px; font-size: 1.1rem; font-weight: bold;
+            border-radius: 8px; cursor: pointer; margin-top: 15px;
             transition: 0.3s;
         }
         .btn-action:hover { background-color: var(--neon-green); color: #0b0c10; box-shadow: 0 0 15px var(--neon-green); }
@@ -88,8 +79,9 @@
 
         .content-container { padding: 0 10%; }
         h2 { color: var(--neon-blue); font-size: 2.2rem; font-style: italic; border-bottom: 2px solid var(--neon-green); padding-bottom: 15px; margin-bottom: 40px; text-transform: uppercase; }
+        h3 { color: var(--neon-green); font-size: 1.4rem; font-style: italic; margin-top: 30px; text-transform: uppercase; }
 
-        /* Zonen Grid */
+        /* Zonen Grid (Alle 4 Zonen wieder da!) */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .zone-card {
             background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 0;
@@ -104,9 +96,16 @@
         .bg-stadt { background: linear-gradient(135deg, #0055ff, #00ffaa); }
         .bg-offroad { background: linear-gradient(135deg, #ff5500, #ffcc00); }
         .bg-drag { background: linear-gradient(135deg, #ff0055, #7b00ff); }
+        
         .zone-content { padding: 25px; }
         .zone-title { font-size: 1.4rem; font-style: italic; font-weight: bold; color: var(--neon-blue); margin: 0 0 10px 0; text-transform: uppercase; }
         .zone-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
+
+        /* Text-Inhalte Styling */
+        .info-text { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; }
+        .step-list { margin: 20px 0; padding-left: 20px; color: var(--text-muted); }
+        .step-list li { margin-bottom: 15px; font-size: 1.05rem; }
+        .step-list strong { color: var(--neon-blue); }
 
         /* --- INTERAKTIVES CUSTOM-STUDIO --- */
         .shop-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: start; }
@@ -117,7 +116,6 @@
         .type-btn { background-color: #0b0c10; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; font-weight: bold; font-style: italic; cursor: pointer; transition: 0.2s; }
         .type-btn:hover, .type-btn.active { border-color: var(--neon-green); color: var(--neon-green); }
 
-        /* Untermenü für Porsche / Mustang */
         .sub-model-container { background-color: #151c24; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px dashed var(--neon-blue); }
         .sub-model-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .sub-btn { background-color: #0b0c10; border: 1px solid #555; color: white; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
@@ -168,59 +166,87 @@
 </head>
 <body>
 
-    <!-- ================= PHASE 1: LOGIN SCREEN ================= -->
     <div id="login-screen" class="login-screen">
         <div class="logo-big">ROREX</div>
         <div class="subtitle">Remote Realistic Experience</div>
-        <!-- Knallharter, fehlerfreier Umschalt-Befehl beim Klick -->
         <button class="btn-action" onclick="document.getElementById('login-screen').style.display='none'; document.getElementById('app-screen').style.display='block';">ANMELDEN</button>
     </div>
 
-    <!-- ================= PHASE 2: HAUPTAPP SCREEN ================= -->
     <div id="app-screen" class="app-screen">
         <nav class="navbar">
             <div class="nav-logo">ROREX</div>
             <div class="nav-links">
-                <a href="#" id="btn-halle" class="nav-btn active" onclick="switchPage('halle')">Halle</a>
-                <a href="https://www.youtube.com" target="_blank" class="nav-btn">Live-Video</a>
-                <a href="#" id="btn-anleitung" class="nav-btn" onclick="switchPage('anleitung')">Anleitung</a>
-                <a href="#" id="btn-shop" class="nav-btn" onclick="switchPage('shop')">Shop</a>
-                <a href="#" id="btn-hilfe" class="nav-btn" onclick="switchPage('hilfe')">Hilfe</a>
-                <a href="#" id="btn-kontakt" class="nav-btn" onclick="switchPage('kontakt')">Kontakt</a>
+                <a href="#" id="nav-halle" class="active" onclick="switchPage('halle')">Halle</a>
+                <a href="https://www.youtube.com" target="_blank">Live-Video</a>
+                <a href="#" id="nav-anleitung" onclick="switchPage('anleitung')">Anleitung</a>
+                <a href="#" id="nav-shop" onclick="switchPage('shop')">Shop</a>
+                <a href="#" id="nav-hilfe" onclick="switchPage('hilfe')">Hilfe</a>
+                <a href="#" id="nav-kontakt" onclick="switchPage('kontakt')">Kontakt</a>
             </div>
         </nav>
 
-        <!-- HALLE REITER -->
-        <div id="page-halle" class="page-section active">
+        <div id="page-halle" class="page-section class-active" style="display: block;">
             <div class="hero-video-placeholder">[ ROREX - ECHTE RC-ACTION LIVE ]</div>
             <div class="content-container">
                 <h2>WÄHLE DEINE ZONE</h2>
                 <div class="grid">
                     <div class="zone-card" onclick="openPaywall('1. Laser-Tag Arena')">
                         <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-laser">⚡ Laser Arena View</div></div>
-                        <div class="zone-content"><div class="zone-title">1. Laser-Tag Arena</div><div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche Treffern aus.</div></div>
+                        <div class="zone-content"><div class="zone-title">1. Laser-Tag Arena</div><div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, lande Treffer auf andere RC-Cars und weiche gegnerischen Schüssen aus.</div></div>
                     </div>
                     <div class="zone-card" onclick="openPaywall('2. Miniatur-Stadt')">
                         <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-stadt">🏙️ City Cockpit View</div></div>
-                        <div class="zone-content"><div class="zone-title">2. Miniatur-Stadt</div><div class="zone-desc">Fahre gemütlich durch realistische Straßen.</div></div>
+                        <div class="zone-content"><div class="zone-title">2. Miniatur-Stadt</div><div class="zone-desc">Fahre gemütlich durch realistische Straßen, parke rückwärts ein oder erkunde die detailreiche Kulisse per First-Person-Cam.</div></div>
+                    </div>
+                    <div class="zone-card" onclick="openPaywall('3. Offroad-Piste')">
+                        <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-offroad">🚜 Mud & Dirt View</div></div>
+                        <div class="zone-content"><div class="zone-title">3. Offroad-Piste</div><div class="zone-desc">Meistere tückische Sandhügel, Schlammlöcher und spektakuläre Sprungschanzen mit unseren robusten Allrad-SUVs.</div></div>
+                    </div>
+                    <div class="zone-card" onclick="openPaywall('4. Drag-Strip (1/4 Meile)')">
+                        <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-drag">🚦 Speed Gate View</div></div>
+                        <div class="zone-content"><div class="zone-title">4. Drag-Strip (1/4 Meile)</div><div class="zone-desc">Schalte im perfekten Moment die Ampel auf Grün und jage dein modifiziertes Drift-Auto in Rekordzeit über die Gerade.</div></div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="page-anleitung" class="page-section"><div class="content-container"><h2>WIE WIRD DAS BENUTZT?</h2></div></div>
-        <div id="page-hilfe" class="page-section"><div class="content-container"><h2>HILFE & SUPPORT</h2></div></div>
-        <div id="page-kontakt" class="page-section"><div class="content-container"><h2>KONTAKT</h2></div></div>
+        <div id="page-anleitung" class="page-section" style="display: none;">
+            <div class="content-container">
+                <h2>WIE WIRD DAS BENUTZT?</h2>
+                <p class="info-text">Willkommen bei ROREX! Du steuerst hier echte, physische RC-Modellautos über unsere Server per Tastatur oder Controller. So einfach geht's:</p>
+                <ul class="step-list">
+                    <li><strong>Schritt 1:</strong> Wähle in der "Halle" eine freie Zone aus und klicke darauf.</li>
+                    <li><strong>Schritt 2:</strong> Nutze das "Live-Video" Menü, um den Stream der Rennstrecke in Echtzeit zu sehen.</li>
+                    <li><strong>Schritt 3:</strong> Fahre mit den Tasten <strong>W, A, S, D</strong> oder den Pfeiltasten deiner Tastatur. Die Leertaste zieht die Handbremse für scharfe Drifts!</li>
+                </ul>
+            </div>
+        </div>
 
-        <!-- ================= SHOP REITER (KOMPLETT MIT JEDER FUNKTION) ================= -->
-        <div id="page-shop" class="page-section">
+        <div id="page-hilfe" class="page-section" style="display: none;">
+            <div class="content-container">
+                <h2>HILFE & SUPPORT (FAQ)</h2>
+                <h3>Das Video laggt oder ruckelt?</h3>
+                <p class="info-text">Überprüfe deine Internetverbindung. Da es sich um ein Live-Videosignal handelt, empfehlen wir eine stabile WLAN- oder LAN-Verbindung.</p>
+                <h3>Mein Auto reagiert nicht?</h3>
+                <p class="info-text">Möglicherweise ist die Batterie des Autos auf der echten Strecke leer und es wird automatisch zur Ladestation gefahren. Wähle in diesem Fall kurz ein anderes Auto aus oder wechsle die Zone.</p>
+            </div>
+        </div>
+
+        <div id="page-kontakt" class="page-section" style="display: none;">
+            <div class="content-container">
+                <h2>KONTAKT ZUM ROREX-TEAM</h2>
+                <p class="info-text">Hast du Fragen, Lob, Kritik oder möchtest ein Problem mit einem der Fahrzeuge melden? Unser Support-Team ist rund um die Uhr für dich da.</p>
+                <p class="info-text" style="color: var(--neon-blue);">📧 <strong>Support-E-Mail:</strong> support@rorex-experience.de</p>
+                <p class="info-text" style="color: var(--neon-green);">🕹️ <strong>Entwickler-Zentrale:</strong> GitHub OpenSource Project Server</p>
+            </div>
+        </div>
+
+        <div id="page-shop" class="page-section" style="display: none;">
             <div class="content-container">
                 <h2>ROREX CUSTOM-STUDIO</h2>
                 
                 <div class="shop-layout">
                     <div class="shop-controls">
-                        
-                        <!-- 1. Haupt-Kategorie -->
                         <div class="shop-option-title">1. Fahrzeug-Kategorie</div>
                         <div class="type-selector">
                             <button id="type-rennwagen" class="type-btn active" onclick="selectCategory('rennwagen')">🏁 Rennwagen</button>
@@ -229,7 +255,6 @@
                             <button id="type-f1" class="type-btn" onclick="selectCategory('f1')">🏎‍🟀 Formel 1</button>
                         </div>
 
-                        <!-- Unter-Modellauswahl für Rennwagen & Drift -->
                         <div id="sub-model-box" class="sub-model-container">
                             <div class="shop-option-title" style="font-size:0.9rem; color:var(--text-main)">Modell auswählen:</div>
                             <div class="sub-model-selector">
@@ -238,8 +263,7 @@
                             </div>
                         </div>
 
-                        <!-- 2. Bauteil-Auswahl -->
-                        <div class="shop-option-title">2. Bauteil wählen (Oder direkt anklicken)</div>
+                        <div class="shop-option-title">2. Bauteil wählen</div>
                         <div class="part-selector">
                             <button id="part-hood" class="part-btn active" onclick="selectPart('hood')">◽ Motorhaube / Front</button>
                             <button id="part-roof" class="part-btn" onclick="selectPart('roof')">◽ Dach & Kabine</button>
@@ -247,7 +271,6 @@
                             <button id="part-spoiler" class="part-btn" onclick="selectPart('spoiler')">◽ Heckspoiler / Aero</button>
                         </div>
 
-                        <!-- 3. Farbpalette -->
                         <div class="shop-option-title">3. Farbe auftragen</div>
                         <div class="color-palette">
                             <div class="color-node" style="background-color: #ffffff;" onclick="applyColor('#ffffff')"></div>
@@ -258,45 +281,34 @@
                             <div class="color-node" style="background-color: #00f0ff;" onclick="applyColor('#00f0ff')"></div>
                         </div>
 
-                        <!-- 4. Sticker -->
                         <div class="shop-option-title">4. Text-Sticker</div>
                         <input type="text" id="shop-text-input" class="sticker-input" placeholder="Startnummer eintippen..." oninput="updateStickerText(this.value)">
                         
                         <button class="btn-action" style="margin-top: 25px;" onclick="alert('Design erfolgreich gespeichert!')">Design speichern 🏁</button>
                     </div>
 
-                    <!-- RECHTE SEITE: INTERAKTIVE MAUS STUDIOFLÄCHE -->
                     <div class="studio-box">
                         <div class="rotation-hint">↔️ Mit linker Maustaste ziehen zum Drehen ↔️</div>
-
                         <div id="car-display-area" class="car-display">
                             <svg id="car-svg-element" class="interactive-car-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
                                 <g id="svg-rotation-group">
-                                    <!-- HECKSPOILER -->
                                     <path id="svg-part-spoiler" class="car-part-path" d="M 40,45 L 80,45 L 70,65 L 30,65 Z M 35,65 L 45,105 L 35,105 Z" onclick="selectPart('spoiler')" />
-                                    <!-- KAROSSERIE SEITEN -->
                                     <path id="svg-part-sides" class="car-part-path" d="M 70,105 L 330,105 L 310,145 L 90,145 Z" onclick="selectPart('sides')" />
-                                    <!-- DACH / KABINE -->
                                     <path id="svg-part-roof" class="car-part-path" d="M 150,105 L 180,55 L 240,55 L 270,105 Z" onclick="selectPart('roof')" />
-                                    <!-- MOTORHAUBE / FRONT -->
                                     <path id="svg-part-hood" class="car-part-path selected-part" d="M 330,105 L 375,120 L 365,145 L 310,145 Z" onclick="selectPart('hood')" />
-                                    <!-- REIFEN -->
                                     <circle cx="110" cy="145" r="22" fill="#222" /> <circle cx="110" cy="145" r="10" fill="#777" />
                                     <circle cx="290" cy="145" r="22" fill="#222" /> <circle cx="290" cy="145" r="10" fill="#777" />
                                 </g>
                             </svg>
                         </div>
-
                         <div id="studio-car-name" class="studio-label">Porsche GT3 Sport</div>
                         <div id="live-sticker-el" class="live-sticker-text" style="display: none;"></div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 
-    <!-- BEZAHLSCHRANKE POPUP -->
     <div id="paywall-modal" class="modal-overlay">
         <div class="modal-content"><span class="close-modal" onclick="closePaywall()">×</span><div class="modal-title" id="modal-zone-name">ZONE</div></div>
     </div>
@@ -304,16 +316,25 @@
     <script>
         let currentSelectedPart = 'hood';
         let currentModel = 'porsche';
-        
         let isDragging = false;
         let previousX = 0;
         let currentRotation = 0;
 
         function switchPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('page-' + pageId).classList.add('active');
-            document.getElementById('btn-' + pageId).classList.add('active');
+            // Alle Sektionen unsichtbar machen
+            document.getElementById('page-halle').style.display = 'none';
+            document.getElementById('page-anleitung').style.display = 'none';
+            document.getElementById('page-shop').style.display = 'none';
+            document.getElementById('page-hilfe').style.display = 'none';
+            document.getElementById('page-kontakt').style.display = 'none';
+            
+            // Die ausgewählte Sektion sichtbar machen
+            document.getElementById('page-' + pageId).style.display = 'block';
+
+            // Menülinks visuell umschalten
+            document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) activeNav.classList.add('active');
         }
 
         function openPaywall(zoneName) { document.getElementById('modal-zone-name').innerText = zoneName; document.getElementById('paywall-modal').style.display = 'flex'; }
@@ -365,27 +386,19 @@
             document.getElementById('svg-part-' + partId).classList.add('selected-part');
         }
 
-        function applyColor(colorHex) {
-            document.getElementById('svg-part-' + currentSelectedPart).style.fill = colorHex;
-        }
-
+        function applyColor(colorHex) { document.getElementById('svg-part-' + currentSelectedPart).style.fill = colorHex; }
         function updateStickerText(text) {
             const sticker = document.getElementById('live-sticker-el');
             if(text.trim() !== "") { sticker.innerText = text; sticker.style.display = 'block'; }
             else { sticker.style.display = 'none'; }
         }
 
-        /* 360° MAUS ROTATION MECHANICALS */
+        /* 360° MAUS ROTATION */
         const displayArea = document.getElementById('car-display-area');
         const rotationGroup = document.getElementById('svg-rotation-group');
 
-        displayArea.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            previousX = e.clientX;
-        });
-
+        displayArea.addEventListener('mousedown', (e) => { isDragging = true; previousX = e.clientX; });
         window.addEventListener('mouseup', () => { isDragging = false; });
-
         displayArea.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             const deltaX = e.clientX - previousX;
