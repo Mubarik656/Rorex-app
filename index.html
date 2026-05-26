@@ -3,111 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROREX - Remote Realistic Experience</title>
+    <title>ROREX - Willkommen</title>
     <style>
+        :root {
+            --bg-color: #0b0c10;
+            --card-bg: #1f2833;
+            --neon-blue: #00f0ff;
+            --neon-green: #39ff14;
+            --text-main: #ffffff;
+            --text-muted: #c5c6c7;
+        }
+
         body {
-            background-color: #121212;
-            color: #ffffff;
+            background-color: var(--bg-color);
+            color: var(--text-main);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            text-align: center;
             margin: 0;
             padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #1f2833 0%, #0b0c10 100%);
         }
-        header {
-            padding: 40px 20px;
-            background: linear-gradient(180deg, #1f1f1f 0%, #121212 100%);
-            border-bottom: 3px solid #00f0ff;
+
+        .login-container {
+            background-color: rgba(31, 40, 51, 0.95);
+            border: 2px solid var(--neon-blue);
+            border-radius: 16px;
+            padding: 40px;
+            width: 100%;
+            max-width: 400px;
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
+            text-align: center;
+            box-sizing: border-box;
         }
-        h1 {
-            color: #00f0ff;
+
+        .logo {
             font-size: 3rem;
-            letter-spacing: 4px;
-            margin: 0;
-            text-shadow: 0 0 10px #00f0ff;
+            font-weight: bold;
+            color: var(--neon-blue);
+            letter-spacing: 5px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 15px var(--neon-blue);
         }
+
         .subtitle {
-            color: #39ff14;
-            font-size: 1.2rem;
-            margin-top: 10px;
+            color: var(--neon-green);
+            font-size: 0.9rem;
             letter-spacing: 2px;
+            margin-bottom: 35px;
+            text-transform: uppercase;
         }
-        .container {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
+
+        .form-box {
+            display: none;
         }
-        .welcome-text {
-            font-size: 1.2rem;
-            color: #aaaaaa;
-            margin-bottom: 40px;
+
+        .form-box.active {
+            display: block;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        .zone-card {
-            background-color: #1e1e1e;
-            border: 2px solid #333;
-            border-radius: 12px;
-            padding: 25px;
+
+        .input-group {
+            margin-bottom: 20px;
             text-align: left;
+            position: relative;
+        }
+
+        .input-group label {
+            display: block;
+            color: var(--neon-blue);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            padding-right: 45px; /* Platz für das Auge-Symbol */
+            background-color: #0b0c10;
+            border: 1px solid #444;
+            border-radius: 8px;
+            color: #fff;
+            font-size: 1rem;
+            box-sizing: border-box;
             transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: var(--neon-green);
+            outline: none;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
+        }
+
+        /* Das Passwort-Auge */
+        .eye-btn {
+            position: absolute;
+            right: 12px;
+            bottom: 10px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
             cursor: pointer;
+            font-size: 1.1rem;
+            transition: 0.3s;
         }
-        .zone-card:hover {
-            border-color: #00f0ff;
-            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
-            transform: translateY(-5px);
+
+        .eye-btn:hover {
+            color: var(--neon-blue);
         }
-        .zone-title {
-            font-size: 1.4rem;
-            color: #00f0ff;
-            margin-0: 0 0 10px 0;
+
+        .btn-action {
+            width: 100%;
+            background-color: transparent;
+            color: var(--neon-green);
+            border: 2px solid var(--neon-green);
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: 0.3s;
+            letter-spacing: 1px;
         }
-        .zone-desc {
-            color: #bbbbbb;
-            font-size: 0.95rem;
-            line-height: 1.4;
+
+        .btn-action:hover {
+            background-color: var(--neon-green);
+            color: #0b0c10;
+            box-shadow: 0 0 15px var(--neon-green);
         }
-        .laser { border-left: 5px solid #ff0055; }
-        .city { border-left: 5px solid #00f0ff; }
-        .offroad { border-left: 5px solid #ffaa00; }
-        .drag { border-left: 5px solid #39ff14; }
+
+        .forgot-link {
+            display: block;
+            margin-top: 15px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.85rem;
+            transition: 0.3s;
+        }
+
+        .forgot-link:hover {
+            color: var(--neon-blue);
+        }
+
+        .switch-text {
+            margin-top: 30px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .switch-text span {
+            color: var(--neon-blue);
+            cursor: pointer;
+            font-weight: bold;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>ROREX</h1>
-        <div class="subtitle">REMOTE REALISTIC EXPERIENCE</div>
-    </header>
+    <div class="login-container">
+        <div class="logo">ROREX</div>
+        <div class="subtitle">Remote Realistic Experience</div>
 
-    <div class="container">
-        <p class="welcome-text">Willkommen in der Halle. Wähle deine Zone und steuere echte 1:24 RC-Autos live über deinen Browser!</p>
-        
-        <div class="grid">
-            <div class="zone-card laser">
-                <div class="zone-title" style="color: #ff0055;">1. Laser-Tag Arena</div>
-                <div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche Treffern aus und jage den Highscore in der Live-Arena.</div>
+        <div id="login-box" class="form-box active">
+            <div class="input-group">
+                <label for="login-email">E-Mail-Adresse</label>
+                <input type="email" id="login-email" placeholder="Deine E-Mail eingeben">
             </div>
-            
-            <div class="zone-card city">
-                <div class="zone-title">2. Miniatur-Stadt</div>
-                <div class="zone-desc">Fahre gemütlich durch realistische Straßen, halte an Ampeln und erkunde die City per Stoßstangen-Kamera.</div>
+            <div class="input-group">
+                <label for="login-password">Passwort</label>
+                <input type="password" id="login-password" placeholder="Dein Passwort eingeben">
+                <button class="eye-btn" onclick="togglePassword('login-password')">👁️</button>
             </div>
+            <button class="btn-action" onclick="alert('Login erfolgreich (Simulation)! Willkommen zurück bei ROREX.')">ANMELDEN</button>
+            <a href="#" class="forgot-link" onclick="alert('Ein Link zum Zurücksetzen des Passworts wurde an deine E-Mail gesendet!')">Passwort vergessen?</a>
             
-            <div class="zone-card offroad">
-                <div class="zone-title" style="color: #ffaa00;">3. Offroad-Track</div>
-                <div class="zone-desc">Meistere Hügel, Schanzen und Hindernisse mit ferngesteuerten Monstertrucks und Buggys.</div>
+            <div class="switch-text">
+                Du hast noch kein Konto? <span onclick="switchBox('register-box')">Jetzt registrieren</span>
             </div>
+        </div>
+
+        <div id="register-box" class="form-box">
+            <div class="input-group">
+                <label for="reg-username">Wunsch-Benutzername</label>
+                <input type="text" id="reg-username" placeholder="z.B. Rorex-Racer">
+            </div>
+            <div class="input-group">
+                <label for="reg-email">E-Mail-Adresse</label>
+                <input type="email" id="reg-email" placeholder="name@beispiel.de">
+            </div>
+            <div class="input-group">
+                <label for="reg-password">Passwort auswählen</label>
+                <input type="password" id="reg-password" placeholder="Sicheres Passwort erstellen">
+                <button class="eye-btn" onclick="togglePassword('reg-password')">👁️</button>
+            </div>
+            <button class="btn-action" onclick="alert('Konto erfolgreich erstellt! Du kannst dich jetzt einloggen.')">KONTO ERSTELLEN</button>
             
-            <div class="zone-card drag">
-                <div class="zone-title" style="color: #39ff14;">4. Drag-Race (1vs1)</div>
-                <div class="zone-desc">Gib Vollgas auf der Highspeed-Geraden. Lichtschranken messen deine Zeit auf die Millisekunde genau.</div>
+            <div class="switch-text">
+                Du hast schon ein Konto? <span onclick="switchBox('login-box')">Hier einloggen</span>
             </div>
         </div>
     </div>
+
+    <script>
+        // Funktion zum Wechseln zwischen Login und Registrierung
+        function switchBox(boxId) {
+            document.querySelectorAll('.form-box').forEach(box => box.classList.remove('active'));
+            document.getElementById(boxId).classList.add('active');
+        }
+
+        // Funktion für das "Passwort-Auge" (Sichtbarkeit umschalten)
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            if (input.type === "password") {
+                input.type = "text";
+            } else {
+                input.type = "password";
+            }
+        }
+    </script>
 
 </body>
 </html>
