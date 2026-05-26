@@ -63,7 +63,7 @@
         .nav-links { display: flex; gap: 10px; }
         .nav-links a {
             color: var(--text-main); text-decoration: none; font-size: 1rem; font-weight: 600; font-style: italic;
-            padding: 10px 16px; border-radius: 5px; transition: 0.3s; text-transform: uppercase;
+            padding: 10px 16px; border-radius: 5px; transition: 0.3s; text-transform: uppercase; cursor: pointer;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--neon-green); background-color: rgba(57, 255, 20, 0.1); }
 
@@ -81,7 +81,7 @@
         h2 { color: var(--neon-blue); font-size: 2.2rem; font-style: italic; border-bottom: 2px solid var(--neon-green); padding-bottom: 15px; margin-bottom: 40px; text-transform: uppercase; }
         h3 { color: var(--neon-green); font-size: 1.4rem; font-style: italic; margin-top: 30px; text-transform: uppercase; }
 
-        /* Zonen Grid (Alle 4 Zonen wieder da!) */
+        /* Zonen Grid */
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
         .zone-card {
             background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 0;
@@ -101,13 +101,12 @@
         .zone-title { font-size: 1.4rem; font-style: italic; font-weight: bold; color: var(--neon-blue); margin: 0 0 10px 0; text-transform: uppercase; }
         .zone-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
-        /* Text-Inhalte Styling */
         .info-text { color: var(--text-muted); font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px; }
         .step-list { margin: 20px 0; padding-left: 20px; color: var(--text-muted); }
         .step-list li { margin-bottom: 15px; font-size: 1.05rem; }
         .step-list strong { color: var(--neon-blue); }
 
-        /* --- INTERAKTIVES CUSTOM-STUDIO --- */
+        /* --- INTERAKTIVES CUSTOM-STUDIO (SHOP) --- */
         .shop-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: start; }
         .shop-controls { background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 30px; border-left: 4px solid var(--neon-blue); }
         .shop-option-title { font-size: 1.1rem; font-weight: bold; font-style: italic; color: var(--neon-blue); margin-bottom: 12px; text-transform: uppercase; }
@@ -176,16 +175,16 @@
         <nav class="navbar">
             <div class="nav-logo">ROREX</div>
             <div class="nav-links">
-                <a href="#" id="nav-halle" class="active" onclick="switchPage('halle')">Halle</a>
+                <a id="nav-halle" class="active" onclick="switchPage('halle')">Halle</a>
                 <a href="https://www.youtube.com" target="_blank">Live-Video</a>
-                <a href="#" id="nav-anleitung" onclick="switchPage('anleitung')">Anleitung</a>
-                <a href="#" id="nav-shop" onclick="switchPage('shop')">Shop</a>
-                <a href="#" id="nav-hilfe" onclick="switchPage('hilfe')">Hilfe</a>
-                <a href="#" id="nav-kontakt" onclick="switchPage('kontakt')">Kontakt</a>
+                <a id="nav-anleitung" onclick="switchPage('anleitung')">Anleitung</a>
+                <a id="nav-shop" onclick="switchPage('shop')">Shop</a>
+                <a id="nav-hilfe" onclick="switchPage('hilfe')">Hilfe</a>
+                <a id="nav-kontakt" onclick="switchPage('kontakt')">Kontakt</a>
             </div>
         </nav>
 
-        <div id="page-halle" class="page-section class-active" style="display: block;">
+        <div id="page-halle" class="page-section" style="display: block;">
             <div class="hero-video-placeholder">[ ROREX - ECHTE RC-ACTION LIVE ]</div>
             <div class="content-container">
                 <h2>WÄHLE DEINE ZONE</h2>
@@ -244,6 +243,7 @@
         <div id="page-shop" class="page-section" style="display: none;">
             <div class="content-container">
                 <h2>ROREX CUSTOM-STUDIO</h2>
+                <p class="info-text">Hier kannst du dein eigenes Auto personalisieren, bevor du auf die Rennstrecke fährst! Wähle ein Bauteil aus und klicke auf eine Farbe.</p>
                 
                 <div class="shop-layout">
                     <div class="shop-controls">
@@ -321,17 +321,17 @@
         let currentRotation = 0;
 
         function switchPage(pageId) {
-            // Alle Sektionen unsichtbar machen
+            // JEDE Sektion komplett unsichtbar machen
             document.getElementById('page-halle').style.display = 'none';
             document.getElementById('page-anleitung').style.display = 'none';
             document.getElementById('page-shop').style.display = 'none';
             document.getElementById('page-hilfe').style.display = 'none';
             document.getElementById('page-kontakt').style.display = 'none';
             
-            // Die ausgewählte Sektion sichtbar machen
+            // NUR die angeklickte Sektion einschalten
             document.getElementById('page-' + pageId).style.display = 'block';
 
-            // Menülinks visuell umschalten
+            // Menü-Links aktiv/inaktiv setzen
             document.querySelectorAll('.navbar a').forEach(a => a.classList.remove('active'));
             const activeNav = document.getElementById('nav-' + pageId);
             if(activeNav) activeNav.classList.add('active');
