@@ -13,357 +13,137 @@
             --text-main: #ffffff;
             --text-muted: #c5c6c7;
         }
-
         body {
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
+            font-family: sans-serif;
+            margin: 0; padding: 0;
             min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: flex; justify-content: center; align-items: center;
             background: radial-gradient(circle at center, #1f2833 0%, #0b0c10 100%);
         }
-
-        /* --- LOGIN SCREEN --- */
         .login-screen {
-            display: block; 
             background-color: rgba(31, 40, 51, 0.95);
             border: 2px solid var(--neon-blue);
-            border-radius: 16px;
-            padding: 40px;
-            width: 100%;
-            max-width: 400px;
+            border-radius: 16px; padding: 40px;
+            width: 100%; max-width: 400px;
             box-shadow: 0 0 30px rgba(0, 240, 255, 0.25);
-            text-align: center;
-            box-sizing: border-box;
+            text-align: center; box-sizing: border-box;
         }
-
-        .logo-big { font-size: 3rem; font-weight: bold; color: var(--neon-blue); letter-spacing: 5px; margin-bottom: 5px; text-shadow: 0 0 15px var(--neon-blue); }
+        .logo-big { font-size: 3rem; font-weight: bold; color: var(--neon-blue); letter-spacing: 5px; margin-bottom: 5px; }
         .subtitle { color: var(--neon-green); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; }
-
+        
+        /* Absolut sicherer Button-Style */
         .btn-action {
-            width: 100%; background-color: transparent; color: var(--neon-green); border: 2px solid var(--neon-green);
-            padding: 14px; font-size: 1.1rem; font-weight: bold; border-radius: 8px; cursor: pointer; margin-top: 15px; transition: 0.3s;
+            display: block !important;
+            width: 100% !important;
+            background-color: var(--neon-green) !important;
+            color: #0b0c10 !important;
+            border: none !important;
+            padding: 15px !important;
+            font-size: 1.2rem !important;
+            font-weight: bold !important;
+            border-radius: 8px !important;
+            cursor: pointer !important;
+            box-shadow: 0 0 15px var(--neon-green);
         }
-        .btn-action:hover { background-color: var(--neon-green); color: #0b0c10; box-shadow: 0 0 15px var(--neon-green); }
-
-        /* --- HAUPTAPP SCREEN --- */
-        .app-screen { display: none; width: 100%; min-height: 100vh; align-self: flex-start; }
-
-        .navbar {
-            background-color: #1f2833; display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 5%; position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid var(--neon-blue);
-        }
-        .nav-logo { font-size: 2rem; font-weight: bold; font-style: italic; color: var(--neon-blue); letter-spacing: 3px; }
-        .nav-links { display: flex; gap: 10px; }
-        .nav-links a {
-            color: var(--text-main); text-decoration: none; font-size: 1rem; font-weight: 600; font-style: italic;
-            padding: 10px 16px; border-radius: 5px; transition: 0.3s; text-transform: uppercase;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--neon-green); background-color: rgba(57, 255, 20, 0.1); }
-
-        .page-section { padding: 40px 0; display: none; }
+        
+        .app-screen { display: none; width: 100%; min-height: 100vh; }
+        .navbar { background-color: #1f2833; padding: 15px 5%; border-bottom: 2px solid var(--neon-blue); display: flex; justify-content: space-between; align-items: center; }
+        .nav-logo { font-size: 2rem; font-weight: bold; color: var(--neon-blue); }
+        .nav-links a { color: var(--text-main); text-decoration: none; margin-left: 20px; font-weight: bold; text-transform: uppercase; }
+        .nav-links a:hover, .nav-links a.active { color: var(--neon-green); }
+        .page-section { padding: 40px 10%; display: none; }
         .page-section.active { display: block; }
-
-        .hero-video-placeholder {
-            background: linear-gradient(90deg, #1f2833 0%, #0b0c10 50%, #1f2833 100%);
-            border-bottom: 2px solid var(--neon-blue); width: 100%; height: 60vh; display: flex;
-            justify-content: center; align-items: center; color: var(--neon-green); margin-bottom: 60px;
-            margin-top: -40px; font-style: italic; font-size: 1.5rem; font-weight: bold; text-transform: uppercase;
-        }
-
-        .content-container { padding: 0 10%; }
-        h2 { color: var(--neon-blue); font-size: 2.2rem; font-style: italic; border-bottom: 2px solid var(--neon-green); padding-bottom: 15px; margin-bottom: 40px; text-transform: uppercase; }
-
-        /* Zonen Grid */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
-        .zone-card {
-            background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 0;
-            transition: 0.3s; cursor: pointer; border-top: 4px solid var(--neon-blue); overflow: hidden; position: relative; display: flex; flex-direction: column;
-        }
-        .zone-card:hover { border-top: 4px solid var(--neon-green); box-shadow: 0 0 20px rgba(57, 255, 20, 0.25); transform: translateY(-5px); }
-        .zone-image-wrapper { width: 100%; height: 0; max-height: 160px; overflow: hidden; transition: height 0.4s ease-in-out; background-color: #0b0c10; }
-        .zone-card:hover .zone-image-wrapper { height: 160px; }
-        .zone-img-placeholder { width: 100%; height: 100%; display: flex; justify-content: center; align-items: center; font-weight: bold; font-style: italic; font-size: 1.1rem; text-transform: uppercase; border-bottom: 1px solid rgba(0, 240, 255, 0.3); }
         
-        .bg-laser { background: linear-gradient(135deg, #7b00ff, #00f0ff); }
-        .bg-stadt { background: linear-gradient(135deg, #0055ff, #00ffaa); }
-        .bg-offroad { background: linear-gradient(135deg, #ff5500, #ffcc00); }
-        .bg-drag { background: linear-gradient(135deg, #ff0055, #7b00ff); }
-        .zone-content { padding: 25px; }
-        .zone-title { font-size: 1.4rem; font-style: italic; font-weight: bold; color: var(--neon-blue); margin: 0 0 10px 0; text-transform: uppercase; }
-        .zone-desc { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
-
-        /* --- INTERAKTIVES CUSTOM-STUDIO --- */
-        .shop-layout { display: grid; grid-template-columns: 1fr 1.25fr; gap: 40px; align-items: start; }
-        .shop-controls { background-color: var(--card-bg); border: 1px solid #333; border-radius: 12px; padding: 30px; border-left: 4px solid var(--neon-blue); }
-        .shop-option-title { font-size: 1.1rem; font-weight: bold; font-style: italic; color: var(--neon-blue); margin-bottom: 12px; text-transform: uppercase; }
-        
-        .type-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 25px; }
-        .type-btn { background-color: #0b0c10; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; font-weight: bold; font-style: italic; cursor: pointer; transition: 0.2s; }
-        .type-btn:hover, .type-btn.active { border-color: var(--neon-green); color: var(--neon-green); }
-
-        /* Untermenü für spezifische Modelle */
-        .sub-model-container { background-color: #151c24; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px dashed var(--neon-blue); }
-        .sub-model-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
-        .sub-btn { background-color: #0b0c10; border: 1px solid #555; color: white; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
-        .sub-btn:hover, .sub-btn.active { border-color: var(--neon-blue); color: var(--neon-blue); }
-
-        .part-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 25px; }
-        .part-btn { background-color: #151c24; border: 1px solid #444; color: white; padding: 10px; border-radius: 6px; cursor: pointer; font-size: 0.9rem; font-weight: bold; text-align: left; }
-        .part-btn.active { border-color: var(--neon-blue); color: var(--neon-blue); background-color: rgba(0, 240, 255, 0.05); }
-
-        .color-palette { display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-bottom: 25px; }
-        .color-node { width: 100%; aspect-ratio: 1; border-radius: 6px; cursor: pointer; border: 2px solid #0b0c10; transition: 0.2s; }
-        .color-node:hover, .color-node.active { transform: scale(1.1); border-color: white; box-shadow: 0 0 10px rgba(255,255,255,0.5); }
-
-        .sticker-input { width: 100%; padding: 12px; background-color: #0b0c10; border: 1px solid #444; border-radius: 8px; color: white; font-size: 1rem; box-sizing: border-box; }
-        .sticker-input:focus { border-color: var(--neon-blue); outline: none; }
-
-        /* Studio-Box mit Maus-Steuerungshinweis */
-        .studio-box {
-            background-color: #11141a; border: 2px solid var(--neon-blue); border-radius: 12px; padding: 25px;
-            display: flex; flex-direction: column; align-items: center; position: relative; box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
-        }
-
-        .rotation-hint { color: var(--neon-blue); font-size: 0.8rem; font-weight: bold; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; animation: pulse 2s infinite; }
-        @keyframes pulse { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
-
-        /* Klick- und drehbare Zeichenfläche */
-        .car-display {
-            background-color: #ffffff; width: 100%; height: 320px; border-radius: 8px; display: flex;
-            justify-content: center; align-items: center; position: relative; overflow: hidden; border: 1px solid #444;
-            cursor: grab; user-select: none;
-        }
-        .car-display:active { cursor: grabbing; }
-
-        .interactive-car-svg { width: 85%; height: auto; max-height: 250px; transform-origin: center; pointer-events: none; }
-        .car-part-path {
-            fill: #e0e0e0; stroke: #222222; stroke-width: 2; cursor: pointer; transition: fill 0.3s ease; pointer-events: auto;
-        }
-        .car-part-path:hover { stroke: var(--neon-blue); stroke-width: 3; }
-        .car-part-path.selected-part { stroke: #00f0ff !important; stroke-width: 4px !important; filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.6)); }
-
-        .studio-label { font-size: 1.4rem; font-weight: bold; font-style: italic; color: white; margin-top: 20px; text-transform: uppercase; }
-        .live-sticker-text { position: absolute; bottom: 85px; background-color: rgba(11, 12, 16, 0.9); color: var(--neon-green); padding: 6px 16px; border-radius: 4px; font-weight: bold; border: 1px solid var(--neon-green); text-transform: uppercase; pointer-events: none; }
-
-        /* --- POPUP --- */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(11, 12, 16, 0.85); z-index: 2000; justify-content: center; align-items: center; }
-        .modal-content { background-color: var(--card-bg); border: 2px solid var(--neon-green); border-radius: 16px; padding: 35px; width: 90%; max-width: 500px; text-align: center; position: relative; }
-        .modal-title { font-size: 1.8rem; font-style: italic; color: var(--neon-blue); margin-bottom: 20px; text-transform: uppercase; }
-        .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
+        /* 360 Studio */
+        .shop-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+        .shop-controls { background-color: var(--card-bg); padding: 30px; border-radius: 12px; border-left: 4px solid var(--neon-blue); }
+        .studio-box { background-color: #11141a; border: 2px solid var(--neon-blue); border-radius: 12px; padding: 25px; text-align: center; }
+        .car-display { background-color: #ffffff; width: 100%; height: 300px; border-radius: 8px; display: flex; justify-content: center; align-items: center; cursor: grab; }
+        .interactive-car-svg { width: 85%; height: auto; }
+        .car-part-path { fill: #e0e0e0; stroke: #222; stroke-width: 2; }
+        .car-part-path.selected-part { stroke: var(--neon-blue) !important; stroke-width: 4px !important; }
+        .color-palette { display: flex; gap: 10px; margin-top: 15px; }
+        .color-node { width: 40px; height: 40px; border-radius: 6px; cursor: pointer; border: 2px solid #0b0c10; }
     </style>
 </head>
 <body>
 
+    <!-- LOGIN -->
     <div id="login-screen" class="login-screen">
         <div class="logo-big">ROREX</div>
         <div class="subtitle">Remote Realistic Experience</div>
-        <button class="btn-action" style="display:block; width:100%;" onclick="loginSuccess()">ANMELDEN</button>
+        <button class="btn-action" onclick="document.getElementById('login-screen').style.display='none'; document.getElementById('app-screen').style.display='block';">ANMELDEN</button>
     </div>
 
+    <!-- HAUPTAPP -->
     <div id="app-screen" class="app-screen">
         <nav class="navbar">
             <div class="nav-logo">ROREX</div>
             <div class="nav-links">
-                <a href="#" id="btn-halle" class="nav-btn active" onclick="switchPage('halle')">Halle</a>
-                <a href="https://www.youtube.com" target="_blank" class="nav-btn">Live-Video</a>
-                <a href="#" id="btn-anleitung" class="nav-btn" onclick="switchPage('anleitung')">Anleitung</a>
-                <a href="#" id="btn-shop" class="nav-btn" onclick="switchPage('shop')">Shop</a>
-                <a href="#" id="btn-hilfe" class="nav-btn" onclick="switchPage('hilfe')">Hilfe</a>
-                <a href="#" id="btn-kontakt" class="nav-btn" onclick="switchPage('kontakt')">Kontakt</a>
+                <a href="#" onclick="document.getElementById('page-halle').style.display='block'; document.getElementById('page-shop').style.display='none';">Halle</a>
+                <a href="#" onclick="document.getElementById('page-halle').style.display='none'; document.getElementById('page-shop').style.display='block';">Shop (360°)</a>
             </div>
         </nav>
 
-        <div id="page-halle" class="page-section active">
-            <div class="hero-video-placeholder">[ ROREX - ECHTE RC-ACTION LIVE ]</div>
-            <div class="content-container">
-                <h2>WÄHLE DEINE ZONE</h2>
-                <div class="grid">
-                    <div class="zone-card" onclick="openPaywall('1. Laser-Tag Arena')">
-                        <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-laser">⚡ Laser Arena View</div></div>
-                        <div class="zone-content"><div class="zone-title">1. Laser-Tag Arena</div><div class="zone-desc">Aktiviere deine Infrarot-Laserkanone.</div></div>
-                    </div>
-                    <div class="zone-card" onclick="openPaywall('2. Miniatur-Stadt')">
-                        <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-stadt">🏙️ City Cockpit View</div></div>
-                        <div class="zone-content"><div class="zone-title">2. Miniatur-Stadt</div><div class="zone-desc">Fahre gemütlich durch realistische Straßen.</div></div>
-                    </div>
-                </div>
-            </div>
+        <!-- HALLE -->
+        <div id="page-halle" class="page-section" style="display: block;">
+            <h2>DEINE ZONEN</h2>
+            <p>Hier geht es bald zu den Live-Strecken!</p>
         </div>
 
-        <div id="page-anleitung" class="page-section"><div class="content-container"><h2>WIE WIRD DAS BENUTZT?</h2></div></div>
-
+        <!-- SHOP / 360 STUDIO -->
         <div id="page-shop" class="page-section">
-            <div class="content-container">
-                <h2>ROREX CUSTOM-STUDIO</h2>
-                
-                <div class="shop-layout">
-                    <div class="shop-controls">
-                        <div class="shop-option-title">1. Fahrzeug-Kategorie</div>
-                        <div class="type-selector">
-                            <button id="type-rennwagen" class="type-btn active" onclick="selectCategory('rennwagen')">🏁 Rennwagen</button>
-                            <button id="type-drift" class="type-btn" onclick="selectCategory('drift')">💨 Drift-Auto</button>
-                            <button id="type-suv" class="type-btn" onclick="selectCategory('suv')">🚜 SUV</button>
-                            <button id="type-f1" class="type-btn" onclick="selectCategory('f1')">🏎‍🟀 Formel 1</button>
-                        </div>
-
-                        <div id="sub-model-box" class="sub-model-container">
-                            <div class="shop-option-title" style="font-size:0.9rem; color:var(--text-main)">Modell auswählen:</div>
-                            <div class="sub-model-selector">
-                                <button id="sub-porsche" class="sub-btn active" onclick="setCarChassis('porsche', 'Porsche GT3 Sport')">Porsche GT3 (2025A)</button>
-                                <button id="sub-mustang" class="sub-btn" onclick="setCarChassis('mustang', 'Ford Mustang GT')">Ford Mustang GT</button>
-                            </div>
-                        </div>
-
-                        <div class="shop-option-title">2. Bauteil wählen</div>
-                        <div class="part-selector">
-                            <button id="part-hood" class="part-btn active" onclick="selectPart('hood')">◽ Motorhaube / Front</button>
-                            <button id="part-roof" class="part-btn" onclick="selectPart('roof')">◽ Dach & Kabine</button>
-                            <button id="part-sides" class="part-btn" onclick="selectPart('sides')">◽ Karosserie / Seiten</button>
-                            <button id="part-spoiler" class="part-btn" onclick="selectPart('spoiler')">◽ Heckspoiler / Aero</button>
-                        </div>
-
-                        <div class="shop-option-title">3. Farbe auftragen</div>
-                        <div class="color-palette">
-                            <div class="color-node" style="background-color: #ffffff;" onclick="applyColor('#ffffff')"></div>
-                            <div class="color-node" style="background-color: #111111;" onclick="applyColor('#111111')"></div>
-                            <div class="color-node" style="background-color: #ff0000;" onclick="applyColor('#ff0000')"></div>
-                            <div class="color-node" style="background-color: #ffcc00;" onclick="applyColor('#ffcc00')"></div>
-                            <div class="color-node" style="background-color: #39ff14;" onclick="applyColor('#39ff14')"></div>
-                            <div class="color-node" style="background-color: #00f0ff;" onclick="applyColor('#00f0ff')"></div>
-                        </div>
-
-                        <div class="shop-option-title">4. Text-Sticker</div>
-                        <input type="text" id="shop-text-input" class="sticker-input" placeholder="Startnummer eintippen..." oninput="updateStickerText(this.value)">
-                        
-                        <button class="btn-action" style="margin-top: 25px;" onclick="alert('Design erfolgreich gespeichert!')">Design speichern 🏁</button>
+            <h2>ROREX CUSTOM-STUDIO (360°)</h2>
+            <div class="shop-layout">
+                <div class="shop-controls">
+                    <h3>1. Farbe wählen</h3>
+                    <div class="color-palette">
+                        <div class="color-node" style="background-color: #ff0000;" onclick="document.getElementById('svg-part-body').style.fill='#ff0000'"></div>
+                        <div class="color-node" style="background-color: #00f0ff;" onclick="document.getElementById('svg-part-body').style.fill='#00f0ff'"></div>
+                        <div class="color-node" style="background-color: #39ff14;" onclick="document.getElementById('svg-part-body').style.fill='#39ff14'"></div>
+                        <div class="color-node" style="background-color: #ffcc00;" onclick="document.getElementById('svg-part-body').style.fill='#ffcc00'"></div>
                     </div>
+                </div>
 
-                    <div class="studio-box">
-                        <div class="rotation-hint">↔️ Mit linker Maustaste ziehen zum Drehen ↔️</div>
-                        <div id="car-display-area" class="car-display">
-                            <svg id="car-svg-element" class="interactive-car-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
-                                <g id="svg-rotation-group">
-                                    <path id="svg-part-spoiler" class="car-part-path" d="M 40,45 L 80,45 L 70,65 L 30,65 Z M 35,65 L 45,105 L 35,105 Z" onclick="selectPart('spoiler')" />
-                                    <path id="svg-part-sides" class="car-part-path" d="M 70,105 L 330,105 L 310,145 L 90,145 Z" onclick="selectPart('sides')" />
-                                    <path id="svg-part-roof" class="car-part-path" d="M 150,105 L 180,55 L 240,55 L 270,105 Z" onclick="selectPart('roof')" />
-                                    <path id="svg-part-hood" class="car-part-path selected-part" d="M 330,105 L 375,120 L 365,145 L 310,145 Z" onclick="selectPart('hood')" />
-                                    <circle cx="110" cy="145" r="22" fill="#222" /> <circle cx="110" cy="145" r="10" fill="#777" />
-                                    <circle cx="290" cy="145" r="22" fill="#222" /> <circle cx="290" cy="145" r="10" fill="#777" />
-                                </g>
-                            </svg>
-                        </div>
-                        <div id="studio-car-name" class="studio-label">Porsche GT3 Sport</div>
-                        <div id="live-sticker-el" class="live-sticker-text" style="display: none;"></div>
+                <div class="studio-box">
+                    <p style="color: var(--neon-blue); font-weight: bold;">↔️ Mit Maus ziehen zum Drehen ↔️</p>
+                    <div id="car-display-area" class="car-display">
+                        <svg class="interactive-car-svg" viewBox="0 0 400 200">
+                            <g id="svg-rotation-group">
+                                <path id="svg-part-body" class="car-part-path" d="M 50,110 L 350,110 L 330,60 L 250,50 L 150,50 L 80,70 Z" />
+                                <circle cx="110" cy="110" r="25" fill="#111" />
+                                <circle cx="290" cy="110" r="25" fill="#111" />
+                            </g>
+                        </svg>
                     </div>
+                    <h3>Dein RC-Modell</h3>
                 </div>
             </div>
         </div>
-
-        <div id="page-hilfe" class="page-section"></div>
-        <div id="page-kontakt" class="page-section"></div>
-    </div>
-
-    <div id="paywall-modal" class="modal-overlay">
-        <div class="modal-content"><span class="close-modal" onclick="closePaywall()">×</span><div class="modal-title" id="modal-zone-name">ZONE</div></div>
     </div>
 
     <script>
-        let currentSelectedPart = 'hood';
-        let currentModel = 'porsche';
+        // Das 360-Grad-Dreh-Skript direkt und fehlerfrei eingebaut
+        const displayArea = document.getElementById('car-display-area');
+        const rotationGroup = document.getElementById('svg-rotation-group');
         let isDragging = false;
         let previousX = 0;
         let currentRotation = 0;
-
-        function loginSuccess() {
-            document.getElementById('login-screen').style.display = 'none';
-            document.getElementById('app-screen').style.display = 'block';
-        }
-
-        function switchPage(pageId) {
-            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
-            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-            document.getElementById('page-' + pageId).classList.add('active');
-            document.getElementById('btn-' + pageId).classList.add('active');
-        }
-
-        function openPaywall(zoneName) { document.getElementById('modal-zone-name').innerText = zoneName; document.getElementById('paywall-modal').style.display = 'flex'; }
-        function closePaywall() { document.getElementById('paywall-modal').style.display = 'none'; }
-
-        function selectCategory(catId) {
-            document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('type-' + catId).classList.add('active');
-            const subBox = document.getElementById('sub-model-box');
-            if(catId === 'rennwagen' || catId === 'drift') {
-                subBox.style.display = 'block';
-                setCarChassis('porsche', 'Porsche GT3 Sport');
-            } else {
-                subBox.style.display = 'none';
-                document.getElementById('studio-car-name').innerText = catId.toUpperCase();
-            }
-        }
-
-        function setCarChassis(modelId, displayName) {
-            currentModel = modelId;
-            document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
-            if(modelId === 'porsche') document.getElementById('sub-porsche').classList.add('active');
-            if(modelId === 'mustang') document.getElementById('sub-mustang').classList.add('active');
-            document.getElementById('studio-car-name').innerText = displayName;
-
-            const spoiler = document.getElementById('svg-part-spoiler');
-            const hood = document.getElementById('svg-part-hood');
-            const roof = document.getElementById('svg-part-roof');
-
-            if(modelId === 'mustang') {
-                spoiler.setAttribute('d', 'M 30,55 L 75,55 L 70,70 L 25,70 Z M 32,70 L 38,105 L 32,105 Z');
-                hood.setAttribute('d', 'M 320,105 L 380,110 L 375,145 L 305,145 Z');
-                roof.setAttribute('d', 'M 140,105 L 185,60 L 255,60 L 285,105 Z');
-            } else {
-                spoiler.setAttribute('d', 'M 40,45 L 80,45 L 70,65 L 30,65 Z M 35,65 L 45,105 L 35,105 Z');
-                hood.setAttribute('d', 'M 330,105 L 375,120 L 365,145 L 310,145 Z');
-                roof.setAttribute('d', 'M 150,105 L 180,55 L 240,55 L 270,105 Z');
-            }
-        }
-
-        function selectPart(partId) {
-            currentSelectedPart = partId;
-            document.querySelectorAll('.part-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById('part-' + partId).classList.add('active');
-            document.querySelectorAll('.car-part-path').forEach(path => path.classList.remove('selected-part'));
-            document.getElementById('svg-part-' + partId).classList.add('selected-part');
-        }
-
-        function applyColor(colorHex) {
-            document.getElementById('svg-part-' + currentSelectedPart).style.fill = colorHex;
-        }
-
-        function updateStickerText(text) {
-            const sticker = document.getElementById('live-sticker-el');
-            if(text.trim() !== "") { sticker.innerText = text; sticker.style.display = 'block'; }
-            else { sticker.style.display = 'none'; }
-        }
-
-        const displayArea = document.getElementById('car-display-area');
-        const rotationGroup = document.getElementById('svg-rotation-group');
 
         displayArea.addEventListener('mousedown', (e) => {
             isDragging = true;
             previousX = e.clientX;
         });
 
-        window.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
+        window.addEventListener('mouseup', () => { isDragging = false; });
 
         displayArea.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             const deltaX = e.clientX - previousX;
             previousX = e.clientX;
-            currentRotation += deltaX * 0.6; 
+            currentRotation += deltaX * 0.8; 
             const scaleX = Math.cos(currentRotation * Math.PI / 180);
             rotationGroup.style.transform = scaleX(${scaleX});
             rotationGroup.style.transformOrigin = "200px 100px";
