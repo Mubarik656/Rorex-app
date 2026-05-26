@@ -106,7 +106,7 @@
         .type-btn { background-color: #0b0c10; border: 1px solid #444; color: white; padding: 12px; border-radius: 8px; font-weight: bold; font-style: italic; cursor: pointer; transition: 0.2s; }
         .type-btn:hover, .type-btn.active { border-color: var(--neon-green); color: var(--neon-green); }
 
-        /* Untermenü für spezifische Modelle (Porsche / Mustang) */
+        /* Untermenü für spezifische Modelle */
         .sub-model-container { background-color: #151c24; padding: 15px; border-radius: 8px; margin-bottom: 25px; border: 1px dashed var(--neon-blue); }
         .sub-model-selector { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
         .sub-btn { background-color: #0b0c10; border: 1px solid #555; color: white; padding: 8px; border-radius: 6px; cursor: pointer; font-weight: bold; font-size: 0.9rem; transition: 0.2s; }
@@ -141,7 +141,6 @@
         .car-display:active { cursor: grabbing; }
 
         .interactive-car-svg { width: 85%; height: auto; max-height: 250px; transform-origin: center; pointer-events: none; }
-        /* Sorgt dafür, dass die einzelnen Pfade trotz deaktivertem SVG-Umfeld klickbar bleiben */
         .car-part-path {
             fill: #e0e0e0; stroke: #222222; stroke-width: 2; cursor: pointer; transition: fill 0.3s ease; pointer-events: auto;
         }
@@ -155,22 +154,17 @@
         .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(11, 12, 16, 0.85); z-index: 2000; justify-content: center; align-items: center; }
         .modal-content { background-color: var(--card-bg); border: 2px solid var(--neon-green); border-radius: 16px; padding: 35px; width: 90%; max-width: 500px; text-align: center; position: relative; }
         .modal-title { font-size: 1.8rem; font-style: italic; color: var(--neon-blue); margin-bottom: 20px; text-transform: uppercase; }
-        .price-options { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; }
-        .price-btn { background-color: #0b0c10; border: 1px solid #444; color: white; padding: 12px 20px; border-radius: 8px; cursor: pointer; display: flex; justify-content: space-between; font-weight: bold; }
-        .price-btn span.cost { color: var(--neon-green); }
         .close-modal { position: absolute; top: 15px; right: 20px; font-size: 1.5rem; color: var(--text-muted); cursor: pointer; }
     </style>
 </head>
 <body>
 
-    <!-- ================= PHASE 1: LOGIN SCREEN ================= -->
     <div id="login-screen" class="login-screen">
         <div class="logo-big">ROREX</div>
         <div class="subtitle">Remote Realistic Experience</div>
-        <button class="btn-action" onclick="loginSuccess()">ANMELDEN</button>
+        <button class="btn-action" style="display:block; width:100%;" onclick="loginSuccess()">ANMELDEN</button>
     </div>
 
-    <!-- ================= PHASE 2: HAUPTAPP SCREEN ================= -->
     <div id="app-screen" class="app-screen">
         <nav class="navbar">
             <div class="nav-logo">ROREX</div>
@@ -184,7 +178,6 @@
             </div>
         </nav>
 
-        <!-- HALLE REITER -->
         <div id="page-halle" class="page-section active">
             <div class="hero-video-placeholder">[ ROREX - ECHTE RC-ACTION LIVE ]</div>
             <div class="content-container">
@@ -192,7 +185,7 @@
                 <div class="grid">
                     <div class="zone-card" onclick="openPaywall('1. Laser-Tag Arena')">
                         <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-laser">⚡ Laser Arena View</div></div>
-                        <div class="zone-content"><div class="zone-title">1. Laser-Tag Arena</div><div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche Treffern aus.</div></div>
+                        <div class="zone-content"><div class="zone-title">1. Laser-Tag Arena</div><div class="zone-desc">Aktiviere deine Infrarot-Laserkanone.</div></div>
                     </div>
                     <div class="zone-card" onclick="openPaywall('2. Miniatur-Stadt')">
                         <div class="zone-image-wrapper"><div class="zone-img-placeholder bg-stadt">🏙️ City Cockpit View</div></div>
@@ -204,15 +197,12 @@
 
         <div id="page-anleitung" class="page-section"><div class="content-container"><h2>WIE WIRD DAS BENUTZT?</h2></div></div>
 
-        <!-- ================= SHOP REITER (360° MAUS INTERACTIVE) ================= -->
         <div id="page-shop" class="page-section">
             <div class="content-container">
                 <h2>ROREX CUSTOM-STUDIO</h2>
                 
                 <div class="shop-layout">
                     <div class="shop-controls">
-                        
-                        <!-- 1. Haupt-Kategorie -->
                         <div class="shop-option-title">1. Fahrzeug-Kategorie</div>
                         <div class="type-selector">
                             <button id="type-rennwagen" class="type-btn active" onclick="selectCategory('rennwagen')">🏁 Rennwagen</button>
@@ -221,17 +211,15 @@
                             <button id="type-f1" class="type-btn" onclick="selectCategory('f1')">🏎‍🟀 Formel 1</button>
                         </div>
 
-                        <!-- Unter-Modellauswahl (Dynamisch für Rennwagen & Drift) -->
                         <div id="sub-model-box" class="sub-model-container">
                             <div class="shop-option-title" style="font-size:0.9rem; color:var(--text-main)">Modell auswählen:</div>
                             <div class="sub-model-selector">
                                 <button id="sub-porsche" class="sub-btn active" onclick="setCarChassis('porsche', 'Porsche GT3 Sport')">Porsche GT3 (2025A)</button>
-                                <button id="sub-mustang" class="sub-btn" onclick="setCarChassis('mustang', 'Ford Mustang Shelby')">Ford Mustang GT</button>
+                                <button id="sub-mustang" class="sub-btn" onclick="setCarChassis('mustang', 'Ford Mustang GT')">Ford Mustang GT</button>
                             </div>
                         </div>
 
-                        <!-- 2. Bauteil-Auswahl -->
-                        <div class="shop-option-title">2. Bauteil wählen (Oder direkt anklicken)</div>
+                        <div class="shop-option-title">2. Bauteil wählen</div>
                         <div class="part-selector">
                             <button id="part-hood" class="part-btn active" onclick="selectPart('hood')">◽ Motorhaube / Front</button>
                             <button id="part-roof" class="part-btn" onclick="selectPart('roof')">◽ Dach & Kabine</button>
@@ -239,7 +227,6 @@
                             <button id="part-spoiler" class="part-btn" onclick="selectPart('spoiler')">◽ Heckspoiler / Aero</button>
                         </div>
 
-                        <!-- 3. Farbpalette -->
                         <div class="shop-option-title">3. Farbe auftragen</div>
                         <div class="color-palette">
                             <div class="color-node" style="background-color: #ffffff;" onclick="applyColor('#ffffff')"></div>
@@ -250,41 +237,30 @@
                             <div class="color-node" style="background-color: #00f0ff;" onclick="applyColor('#00f0ff')"></div>
                         </div>
 
-                        <!-- 4. Sticker -->
                         <div class="shop-option-title">4. Text-Sticker</div>
-                        <input type="text" id="shop-text-input" class="sticker-input" placeholder="Startnummer eingippen..." oninput="updateStickerText(this.value)">
+                        <input type="text" id="shop-text-input" class="sticker-input" placeholder="Startnummer eintippen..." oninput="updateStickerText(this.value)">
                         
                         <button class="btn-action" style="margin-top: 25px;" onclick="alert('Design erfolgreich gespeichert!')">Design speichern 🏁</button>
                     </div>
 
-                    <!-- RECHTE SEITE: 360° LIVE MAUS STUDIO -->
                     <div class="studio-box">
                         <div class="rotation-hint">↔️ Mit linker Maustaste ziehen zum Drehen ↔️</div>
-
                         <div id="car-display-area" class="car-display">
-                            <!-- Das interaktive Grafik-Auto-Chassis -->
                             <svg id="car-svg-element" class="interactive-car-svg" viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
                                 <g id="svg-rotation-group">
-                                    <!-- HECKSPOILER -->
                                     <path id="svg-part-spoiler" class="car-part-path" d="M 40,45 L 80,45 L 70,65 L 30,65 Z M 35,65 L 45,105 L 35,105 Z" onclick="selectPart('spoiler')" />
-                                    <!-- KAROSSERIE SEITEN -->
                                     <path id="svg-part-sides" class="car-part-path" d="M 70,105 L 330,105 L 310,145 L 90,145 Z" onclick="selectPart('sides')" />
-                                    <!-- DACH / KABINE -->
                                     <path id="svg-part-roof" class="car-part-path" d="M 150,105 L 180,55 L 240,55 L 270,105 Z" onclick="selectPart('roof')" />
-                                    <!-- MOTORHAUBE / FRONT -->
                                     <path id="svg-part-hood" class="car-part-path selected-part" d="M 330,105 L 375,120 L 365,145 L 310,145 Z" onclick="selectPart('hood')" />
-                                    <!-- REIFEN (Deko) -->
                                     <circle cx="110" cy="145" r="22" fill="#222" /> <circle cx="110" cy="145" r="10" fill="#777" />
                                     <circle cx="290" cy="145" r="22" fill="#222" /> <circle cx="290" cy="145" r="10" fill="#777" />
                                 </g>
                             </svg>
                         </div>
-
                         <div id="studio-car-name" class="studio-label">Porsche GT3 Sport</div>
                         <div id="live-sticker-el" class="live-sticker-text" style="display: none;"></div>
                     </div>
                 </div>
-
             </div>
         </div>
 
@@ -292,7 +268,6 @@
         <div id="page-kontakt" class="page-section"></div>
     </div>
 
-    <!-- BEZAHLSCHRANKE POPUP -->
     <div id="paywall-modal" class="modal-overlay">
         <div class="modal-content"><span class="close-modal" onclick="closePaywall()">×</span><div class="modal-title" id="modal-zone-name">ZONE</div></div>
     </div>
@@ -300,8 +275,6 @@
     <script>
         let currentSelectedPart = 'hood';
         let currentModel = 'porsche';
-        
-        // 360° Rotations-Variablen
         let isDragging = false;
         let previousX = 0;
         let currentRotation = 0;
@@ -321,11 +294,9 @@
         function openPaywall(zoneName) { document.getElementById('modal-zone-name').innerText = zoneName; document.getElementById('paywall-modal').style.display = 'flex'; }
         function closePaywall() { document.getElementById('paywall-modal').style.display = 'none'; }
 
-        // Kategorie-Umschalter
         function selectCategory(catId) {
             document.querySelectorAll('.type-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('type-' + catId).classList.add('active');
-            
             const subBox = document.getElementById('sub-model-box');
             if(catId === 'rennwagen' || catId === 'drift') {
                 subBox.style.display = 'block';
@@ -336,27 +307,22 @@
             }
         }
 
-        // Chassis-Umschalter (Wechselt die SVG-Formen passend zum echten Auto)
         function setCarChassis(modelId, displayName) {
             currentModel = modelId;
             document.querySelectorAll('.sub-btn').forEach(b => b.classList.remove('active'));
             if(modelId === 'porsche') document.getElementById('sub-porsche').classList.add('active');
             if(modelId === 'mustang') document.getElementById('sub-mustang').classList.add('active');
-            
             document.getElementById('studio-car-name').innerText = displayName;
 
-            // Form-Anpassung je nach echtem Gehäuse-Design aus AliExpress
             const spoiler = document.getElementById('svg-part-spoiler');
             const hood = document.getElementById('svg-part-hood');
             const roof = document.getElementById('svg-part-roof');
 
             if(modelId === 'mustang') {
-                // Mustang: Flacheres Heck, bulligere eckige Front
                 spoiler.setAttribute('d', 'M 30,55 L 75,55 L 70,70 L 25,70 Z M 32,70 L 38,105 L 32,105 Z');
                 hood.setAttribute('d', 'M 320,105 L 380,110 L 375,145 L 305,145 Z');
                 roof.setAttribute('d', 'M 140,105 L 185,60 L 255,60 L 285,105 Z');
             } else {
-                // Porsche: Typisch geschwungene flache Front, runderes Dach, hoher GT3 Flügel
                 spoiler.setAttribute('d', 'M 40,45 L 80,45 L 70,65 L 30,65 Z M 35,65 L 45,105 L 35,105 Z');
                 hood.setAttribute('d', 'M 330,105 L 375,120 L 365,145 L 310,145 Z');
                 roof.setAttribute('d', 'M 150,105 L 180,55 L 240,55 L 270,105 Z');
@@ -367,7 +333,6 @@
             currentSelectedPart = partId;
             document.querySelectorAll('.part-btn').forEach(b => b.classList.remove('active'));
             document.getElementById('part-' + partId).classList.add('active');
-            
             document.querySelectorAll('.car-part-path').forEach(path => path.classList.remove('selected-part'));
             document.getElementById('svg-part-' + partId).classList.add('selected-part');
         }
@@ -382,7 +347,6 @@
             else { sticker.style.display = 'none'; }
         }
 
-        // ================= 360° MAUS ROTATIONS LOGIK =================
         const displayArea = document.getElementById('car-display-area');
         const rotationGroup = document.getElementById('svg-rotation-group');
 
@@ -397,17 +361,10 @@
 
         displayArea.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
-            
             const deltaX = e.clientX - previousX;
             previousX = e.clientX;
-            
-            // Empfindlichkeit der Drehung einstellen
             currentRotation += deltaX * 0.6; 
-            
-            // Verzerrung simulieren für einen coolen 3D-Dreheffekt auf der 2D-Fläche!
             const scaleX = Math.cos(currentRotation * Math.PI / 180);
-            
-            // Transform anwenden
             rotationGroup.style.transform = scaleX(${scaleX});
             rotationGroup.style.transformOrigin = "200px 100px";
         });
