@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ROREX - Willkommen</title>
+    <title>ROREX - Remote Realistic Experience</title>
     <style>
         :root {
             --bg-color: #0b0c10;
@@ -20,14 +20,16 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
             background: radial-gradient(circle at center, #1f2833 0%, #0b0c10 100%);
         }
 
-        .login-container {
+        /* --- 1. LOGIN & REGISTRIERUNG --- */
+        .login-screen {
+            display: block; /* Standardmäßig sichtbar */
             background-color: rgba(31, 40, 51, 0.95);
             border: 2px solid var(--neon-blue);
             border-radius: 16px;
@@ -39,7 +41,7 @@
             box-sizing: border-box;
         }
 
-        .logo {
+        .logo-big {
             font-size: 3rem;
             font-weight: bold;
             color: var(--neon-blue);
@@ -56,13 +58,8 @@
             text-transform: uppercase;
         }
 
-        .form-box {
-            display: none;
-        }
-
-        .form-box.active {
-            display: block;
-        }
+        .form-box { display: none; }
+        .form-box.active { display: block; }
 
         .input-group {
             margin-bottom: 20px;
@@ -80,14 +77,13 @@
         .input-group input {
             width: 100%;
             padding: 12px;
-            padding-right: 45px; /* Platz für das Auge-Symbol */
+            padding-right: 45px;
             background-color: #0b0c10;
             border: 1px solid #444;
             border-radius: 8px;
             color: #fff;
             font-size: 1rem;
             box-sizing: border-box;
-            transition: 0.3s;
         }
 
         .input-group input:focus {
@@ -96,7 +92,6 @@
             box-shadow: 0 0 10px rgba(57, 255, 20, 0.2);
         }
 
-        /* Das Passwort-Auge */
         .eye-btn {
             position: absolute;
             right: 12px;
@@ -106,11 +101,6 @@
             color: var(--text-muted);
             cursor: pointer;
             font-size: 1.1rem;
-            transition: 0.3s;
-        }
-
-        .eye-btn:hover {
-            color: var(--neon-blue);
         }
 
         .btn-action {
@@ -125,7 +115,6 @@
             cursor: pointer;
             margin-top: 15px;
             transition: 0.3s;
-            letter-spacing: 1px;
         }
 
         .btn-action:hover {
@@ -140,11 +129,6 @@
             color: var(--text-muted);
             text-decoration: none;
             font-size: 0.85rem;
-            transition: 0.3s;
-        }
-
-        .forgot-link:hover {
-            color: var(--neon-blue);
         }
 
         .switch-text {
@@ -161,12 +145,131 @@
             font-weight: bold;
             text-decoration: underline;
         }
+
+
+        /* --- 2. DIE HAUPTAPP (NACH LOGIN) --- */
+        .app-screen {
+            display: none; /* Erst unsichtbar, wird nach Login aktiv */
+            width: 100%;
+            min-height: 100vh;
+            align-self: flex-start;
+        }
+
+        /* Obere Navigationsleiste */
+        .navbar {
+            background-color: #1f2833;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--neon-blue);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+        }
+
+        .nav-logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--neon-blue);
+            letter-spacing: 3px;
+            text-shadow: 0 0 10px var(--neon-blue);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            padding: 8px 14px;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--neon-green);
+            background-color: rgba(57, 255, 20, 0.1);
+        }
+
+        /* Bereiche (Tabs) */
+        .page-section {
+            padding: 40px 10%;
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Nike-Style Video/Bilder Platzhalter */
+        .hero-video-placeholder {
+            background: linear-gradient(90deg, #1f2833 0%, #0b0c10 50%, #1f2833 100%);
+            border: 1px dashed var(--neon-blue);
+            border-radius: 12px;
+            height: 250px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+            font-style: italic;
+            box-shadow: inset 0 0 20px rgba(0, 240, 255, 0.1);
+        }
+
+        h2 {
+            color: var(--neon-blue);
+            font-size: 2rem;
+            border-bottom: 2px solid var(--neon-green);
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+        }
+
+        /* Grid für die 4 Zonen */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+        }
+
+        .zone-card {
+            background-color: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            transition: 0.3s;
+            cursor: pointer;
+            border-top: 4px solid var(--neon-blue);
+        }
+
+        .zone-card:hover {
+            border-top: 4px solid var(--neon-green);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .zone-title {
+            font-size: 1.3rem;
+            color: var(--neon-blue);
+            margin: 0 0 10px 0;
+        }
+
+        .zone-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
 
-    <div class="login-container">
-        <div class="logo">ROREX</div>
+    <div id="login-screen" class="login-screen">
+        <div class="logo-big">ROREX</div>
         <div class="subtitle">Remote Realistic Experience</div>
 
         <div id="login-box" class="form-box active">
@@ -179,7 +282,7 @@
                 <input type="password" id="login-password" placeholder="Dein Passwort eingeben">
                 <button class="eye-btn" onclick="togglePassword('login-password')">👁️</button>
             </div>
-            <button class="btn-action" onclick="alert('Login erfolgreich (Simulation)! Willkommen zurück bei ROREX.')">ANMELDEN</button>
+            <button class="btn-action" onclick="loginSuccess()">ANMELDEN</button>
             <a href="#" class="forgot-link" onclick="alert('Ein Link zum Zurücksetzen des Passworts wurde an deine E-Mail gesendet!')">Passwort vergessen?</a>
             
             <div class="switch-text">
@@ -201,7 +304,7 @@
                 <input type="password" id="reg-password" placeholder="Sicheres Passwort erstellen">
                 <button class="eye-btn" onclick="togglePassword('reg-password')">👁️</button>
             </div>
-            <button class="btn-action" onclick="alert('Konto erfolgreich erstellt! Du kannst dich jetzt einloggen.')">KONTO ERSTELLEN</button>
+            <button class="btn-action" onclick="loginSuccess()">KONTO ERSTELLEN</button>
             
             <div class="switch-text">
                 Du hast schon ein Konto? <span onclick="switchBox('login-box')">Hier einloggen</span>
@@ -209,21 +312,102 @@
         </div>
     </div>
 
+
+    <div id="app-screen" class="app-screen">
+        
+        <nav class="navbar">
+            <div class="nav-logo">ROREX</div>
+            <div class="nav-links">
+                <a href="#" id="btn-halle" class="nav-btn active" onclick="switchPage('halle')">Halle</a>
+                <a href="https://www.youtube.com" target="_blank" class="nav-btn">Live-Video</a>
+                <a href="#" id="btn-anleitung" class="nav-btn" onclick="switchPage('anleitung')">Anleitung</a>
+                <a href="#" id="btn-shop" class="nav-btn" onclick="switchPage('shop')">Shop</a>
+                <a href="#" id="btn-hilfe" class="nav-btn" onclick="switchPage('hilfe')">Hilfe</a>
+                <a href="#" id="btn-kontakt" class="nav-btn" onclick="switchPage('kontakt')">Kontakt</a>
+            </div>
+        </nav>
+
+        <div id="page-halle" class="page-section active">
+            <div class="hero-video-placeholder">
+                [ Hier läuft später dein cooles Nike-Style Hintergrund-Video von den RC-Autos ]
+            </div>
+
+            <h2>WÄHLE DEINE ZONE</h2>
+            <div class="grid">
+                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
+                    <div class="zone-title">1. Laser-Tag Arena</div>
+                    <div class="zone-desc">Aktiviere deine Infrarot-Laserkanone, weiche feindlichen Treffern aus und jage den Highscore.</div>
+                </div>
+                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
+                    <div class="zone-title">2. Miniatur-Stadt</div>
+                    <div class="zone-desc">Fahre gemütlich durch realistische Straßen, halte an Ampeln und erkunde die City per Cockpit-Kamera.</div>
+                </div>
+                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
+                    <div class="zone-title">3. Offroad-Track</div>
+                    <div class="zone-desc">Meistere Hügel, Schanzen und tückischen Sand mit ferngesteuerten Monstertrucks.</div>
+                </div>
+                <div class="zone-card" onclick="alert('Hier öffnet sich gleich die Bezahlschranke!')">
+                    <div class="zone-title">4. Drag-Race (1vs1)</div>
+                    <div class="zone-desc">Reine Nervensache. Gib Vollgas auf der Gerade und knacke den weltweiten Streckenrekord.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="page-anleitung" class="page-section">
+            <h2>WIE WIRD DAS BENUTZT?</h2>
+            <p>Die Bedienung der ROREX-Fahrzeuge ist kinderleicht und erfordert keine Installation.</p>
+        </div>
+
+        <div id="page-shop" class="page-section">
+            <h2>ROREX CUSTOM-SHOP</h2>
+            <p>Hier kannst du bald dein eigenes Auto personalisieren und für die Halle bestellen...</p>
+        </div>
+
+        <div id="page-hilfe" class="page-section">
+            <h2>HILFE & SUPPORT</h2>
+            <p>Dein Auto steckt fest? Drücke im Spiel den "Reset"-Knopf, um es automatisch zurückzusetzen.</p>
+        </div>
+
+        <div id="page-kontakt" class="page-section">
+            <h2>KONTAKT</h2>
+            <p>Schreibe dem ROREX-Team direkt eine Nachricht.</p>
+        </div>
+
+    </div>
+
     <script>
-        // Funktion zum Wechseln zwischen Login und Registrierung
+        // Wechsel zwischen Login und Registrierung
         function switchBox(boxId) {
             document.querySelectorAll('.form-box').forEach(box => box.classList.remove('active'));
             document.getElementById(boxId).classList.add('active');
         }
 
-        // Funktion für das "Passwort-Auge" (Sichtbarkeit umschalten)
+        // Passwort-Auge
         function togglePassword(inputId) {
             const input = document.getElementById(inputId);
-            if (input.type === "password") {
-                input.type = "text";
-            } else {
-                input.type = "password";
-            }
+            input.type = (input.type === "password") ? "text" : "password";
+        }
+
+        // ERFOLGREICHER LOGIN -> Wechsel zur Hauptapp
+        function loginSuccess() {
+            // Login-Bildschirm ausblenden
+            document.getElementById('login-screen').style.display = 'none';
+            // Haupt-App einblenden
+            document.getElementById('app-screen').style.display = 'block';
+            // Zentrierung vom Body aufheben, damit die App oben bündig sitzt
+            document.body.style.display = 'block';
+        }
+
+        // Wechsel zwischen den Reitern in der Navbar
+        function switchPage(pageId) {
+            // Alle Bereiche ausblenden
+            document.querySelectorAll('.page-section').forEach(page => page.classList.remove('active'));
+            // Alle Nav-Buttons deaktivieren
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            
+            // Gewünschte Seite und Button aktivieren
+            document.getElementById('page-' + pageId).classList.add('active');
+            document.getElementById('btn-' + pageId).classList.add('active');
         }
     </script>
 
